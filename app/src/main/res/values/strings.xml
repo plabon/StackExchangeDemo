@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">StackExchange</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="search_fragment_label">StackExchange</string>
+    <string name="details_fragment_label">User</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="search_txt">Search</string>
+    <string name="user_name_hint_txt">Type User Name</string>
+    <string name="reputation_label_txt">Reputation:</string>
+    <string name="top_tags_label_txt">TopTags:</string>
+    <string name="badges_label_txt">Badges:</string>
+</resources>

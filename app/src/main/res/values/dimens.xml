@@ -1,0 +1,6 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="dp_50">50dp</dimen>
+    <dimen name="dp_4">4dp</dimen>
+    <dimen name="activity_horizontal_margin">10dp</dimen>
+</resources>

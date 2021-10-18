@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/SearchUserFragment">
+
+    <fragment
+        android:id="@+id/SearchUserFragment"
+        android:name="com.jukti.stackexchange.ui.search.SearchFragment"
+        android:label="@string/search_fragment_label"
+        tools:layout="@layout/fragment_search">
+
+        <action
+            android:id="@+id/action_UserSearchFragment_to_UserDetailsFragment"
+            app:destination="@id/UserDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/UserDetailsFragment"
+        android:name="com.jukti.stackexchange.ui.details.UserDetailsFragment"
+        android:label="@string/details_fragment_label"
+        tools:layout="@layout/fragment_user_details">
+
+        <action
+            android:id="@+id/action_UserDetailsFragment_to_UserListFragment"
+            app:destination="@id/SearchUserFragment" />
+    </fragment>
+</navigation>
