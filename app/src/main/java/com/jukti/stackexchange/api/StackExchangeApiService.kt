@@ -1,7 +1,6 @@
 package com.jukti.stackexchange.api
 
 import androidx.lifecycle.LiveData
-import com.jukti.stackexchange.api.ApiResponse
 import com.jukti.stackexchange.data.model.StackExchangeUserListApiResponse
 import com.jukti.stackexchange.data.model.StackExchangeUserTagListApiResponse
 import retrofit2.http.GET

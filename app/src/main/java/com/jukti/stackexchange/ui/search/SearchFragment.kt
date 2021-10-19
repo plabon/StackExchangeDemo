@@ -1,17 +1,18 @@
 package com.jukti.stackexchange.ui.search
 
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.jukti.stackexchange.R
 import com.jukti.stackexchange.data.model.StackExchangeUser
 import com.jukti.stackexchange.data.model.Status
@@ -40,7 +41,7 @@ class SearchFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         searchViewModel = ViewModelProvider(requireActivity()).get(SearchViewModel::class.java)
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
@@ -56,8 +57,11 @@ class SearchFragment : Fragment() {
         }
 
         binding.searchButton.setOnClickListener {
-            if(!binding.searchInputEdittxt.text.isNullOrEmpty())
+            if(!binding.searchInputEdittxt.text.isNullOrEmpty()) {
                 searchViewModel.setSearchQuery(binding.searchInputEdittxt.text.toString())
+                hideSoftKeyBoard()
+            }
+
         }
 
 
@@ -65,12 +69,15 @@ class SearchFragment : Fragment() {
 
     }
 
+    fun hideSoftKeyBoard() {
+            val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(requireView().getWindowToken(), 0)
+
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initObservers()
-//        binding.buttonFirst.setOnClickListener {
-//            findNavController().navigate(R.id.action_UserSearchFragment_to_UserDetailsFragment)
-//        }
     }
 
     private fun initObservers() {
@@ -81,7 +88,6 @@ class SearchFragment : Fragment() {
                     Status.SUCCESS -> {
                         binding.progressBar.visibility = View.GONE
                         response.data?.users?.let { users ->
-                            Log.d(TAG,"Update Paise")
                             searchAdapter.collection = users as MutableList<StackExchangeUser>
 
                         }
@@ -93,8 +99,11 @@ class SearchFragment : Fragment() {
                         binding.progressBar.visibility = View.GONE
                     }
                     Status.NO_INTERNET -> {
-                        binding.progressBar.visibility = View.VISIBLE
-                        //TODO show view for no internet
+                        binding.progressBar.visibility = View.GONE
+                        activity?.let {
+                            Snackbar.make(it.findViewById(android.R.id.content), getString(R.string.no_internet_connection_message), Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show()
+                        }
                     }
                 }
             })

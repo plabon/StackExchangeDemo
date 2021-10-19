@@ -14,4 +14,5 @@
     <string name="reputation_label_txt">Reputation:</string>
     <string name="top_tags_label_txt">TopTags:</string>
     <string name="badges_label_txt">Badges:</string>
+    <string name="no_internet_connection_message">Please check your Internet connection!!</string>
 </resources>

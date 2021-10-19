@@ -36,7 +36,7 @@ class SearchAdapter @Inject constructor() : RecyclerView.Adapter<SearchAdapter.V
         fun bind(user: StackExchangeUser, clickListener: (StackExchangeUser) -> Unit) {
 
             binding.reputationTv.text = user.reputation.toString()
-            binding.usernameTv.text = user.displayName
+            binding.usernameTv.text = user.displayName.trim()
             itemView.setOnClickListener {
                 clickListener(user)
             }

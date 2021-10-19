@@ -17,8 +17,6 @@
 package com.jukti.stackexchange.api;
 
 import androidx.lifecycle.LiveData
-import com.jukti.stackexchange.api.ApiResponse
-import com.jukti.stackexchange.api.LiveDataCallAdapter
 import retrofit2.CallAdapter
 import retrofit2.CallAdapter.Factory
 import retrofit2.Retrofit

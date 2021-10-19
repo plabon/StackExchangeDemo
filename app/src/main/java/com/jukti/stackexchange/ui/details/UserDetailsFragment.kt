@@ -33,7 +33,7 @@ class UserDetailsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         userDetailsViewModel = ViewModelProvider(this).get(UserDetailsViewModel::class.java)
         _binding = FragmentUserDetailsBinding.inflate(inflater, container, false)
         return binding.root
@@ -57,7 +57,6 @@ class UserDetailsFragment : Fragment() {
             when (response.status) {
                 Status.SUCCESS -> {
                     response.data?.let { tags ->
-                        Log.e(TAG,tags?.toptags?.size.toString())
                         binding.tags = tags
                     }
                 }
