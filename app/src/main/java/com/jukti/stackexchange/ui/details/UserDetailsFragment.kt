@@ -44,7 +44,7 @@ class UserDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initObservers()
         arguments?.getParcelable<StackExchangeUser>(USER_ITEM)?.let {
-            userDetailsViewModel.user.value = it
+            userDetailsViewModel.setUser(it)
         }
     }
 

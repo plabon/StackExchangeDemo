@@ -14,7 +14,7 @@ class SearchViewModel @Inject constructor(
     private val repository: StackExchangeRepository
 ) : ViewModel() {
 
-    var searchQuery = MutableLiveData<String>()
+    private val searchQuery = MutableLiveData<String>()
 
     fun setSearchQuery(value:String){
         searchQuery.value = value

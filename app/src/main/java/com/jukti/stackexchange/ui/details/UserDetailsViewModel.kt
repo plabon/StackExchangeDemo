@@ -1,5 +1,6 @@
 package com.jukti.stackexchange.ui.details
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
@@ -12,11 +13,11 @@ import javax.inject.Inject
 class UserDetailsViewModel @Inject constructor(
     private val repository: StackExchangeRepository
 ) : ViewModel() {
-
-    var user = MutableLiveData<StackExchangeUser>()
+    private val _user = MutableLiveData<StackExchangeUser>()
+    var user:LiveData<StackExchangeUser> = _user;
 
     fun setUser(stackUser:StackExchangeUser){
-        user.value = stackUser
+        _user.value = stackUser
     }
 
     val taglist = Transformations.switchMap(user) { searchText ->
